@@ -1,4 +1,4 @@
-package com.mohsinayub.kotlin.listmaker
+package com.mohsinayub.kotlin.listmaker.ui.main
 
 import androidx.lifecycle.ViewModel
 
