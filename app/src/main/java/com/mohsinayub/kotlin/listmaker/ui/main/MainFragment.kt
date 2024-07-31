@@ -1,12 +1,12 @@
 package com.mohsinayub.kotlin.listmaker.ui.main
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.mohsinayub.kotlin.listmaker.R
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.mohsinayub.kotlin.listmaker.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
 
@@ -14,18 +14,15 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
-    private val viewModel: MainViewModel by viewModels()
+    private lateinit var binding: MainFragmentBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View {
+        binding = MainFragmentBinding.inflate(inflater, container, false)
 
-        // TODO: Use the ViewModel
-    }
+        binding.listsRecyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.listsRecyclerview.adapter = ListSelectionRecyclerViewAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return binding.root
     }
 }
